@@ -14,6 +14,9 @@ public class Coffee {
     private String name;
     private String type;
 
+    @OneToOne
+    private Cup cup;
+
     @ManyToOne
     private Place place;
 
@@ -22,11 +25,8 @@ public class Coffee {
     }
 
     public void setPlace(Place place) {
-        this.place=place;
+        this.place = place;
     }
-
-    @OneToOne
-    private Cup cup;
 
     public Cup getCup() {
         return cup;

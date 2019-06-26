@@ -8,21 +8,23 @@ public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
 
-    @OneToMany(mappedBy = "place")
-    private Set<Coffee> coffee;
+    private String name;
 
     @OneToOne
     private Adress adress;
+
+    @OneToMany(mappedBy = "place")
+    private Set<Coffee> coffees;
 
     public Place(){
 
     }
 
-    public Place(String name, Adress adress) {
+    public Place(String name, Adress adress, Set<Coffee> coffees) {
         this.name = name;
         this.adress=adress;
+        this.coffees=coffees;
     }
 
     public Long getId() {
@@ -50,10 +52,10 @@ public class Place {
     }
 
     public Set<Coffee> getCoffee() {
-        return coffee;
+        return coffees;
     }
 
     public void setCoffee(Set<Coffee> coffee) {
-        this.coffee = coffee;
+        this.coffees = coffees;
     }
 }

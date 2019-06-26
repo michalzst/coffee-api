@@ -28,24 +28,30 @@ public class CoffeeApi {
 //        this.coffeeRepo=coffeeRepo;
 //    }
 //      koniec 3 sposobu
-
+//
 //    @EventListener(ApplicationReadyEvent.class) //taka jakby inicializacja bazy danych
 //    public void get() {
-//        Coffee coffee1 = new Coffee("Jacobs", "Black");
-//        Coffee coffee2 = new Coffee("Tchibo", "White");
-//        Cup cupSmall = new Cup(Size.SMALL);
-//        Cup cupMedium = new Cup(Size.MEDIUM);
-//        Adress adress = new Adress("Kolumba 86", "Szczecin", "73-110");
-//        Place place = new Place("Columbus", adress);
 //
-//        adressRepo.save(adress);
+//        // save cup
+//        Cup cupBig = new Cup(Size.BIG);
+//        Cup cupSmall = new Cup(Size.SMALL);
+//        cupRepo.save(cupBig);
 //        cupRepo.save(cupSmall);
-//        cupRepo.save(cupMedium);
+//
+//        Adress adress = new Adress("Kolumba 86", "Szczecin", "73-110");
+//        adressRepo.save(adress);
+//
+//        Place place = new Place();
+//        place.setName("Columbus");
+//        place.setAdress(adress);
 //        placeRepo.save(place);
 //
+//        Coffee coffee1 = new Coffee("Jacobs", "Black");
 //        coffee1.setCup(cupSmall);
 //        coffee1.setPlace(place);
-//        coffee2.setCup(cupMedium);
+//
+//        Coffee coffee2 = new Coffee("Tchibo", "White");
+//        coffee2.setCup(cupBig);
 //        coffee2.setPlace(place);
 //
 //        coffeeRepo.save(coffee1);

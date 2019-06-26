@@ -1,5 +1,8 @@
 package pl.sda.springbootcoffee.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import pl.sda.springbootcoffee.Entity.Cup;
 
 import javax.persistence.*;
@@ -10,22 +13,50 @@ public class Coffee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String type;
+    private Long idCoffee;
+    private String nameCoffee;
+    private String typeCoffee;
 
     @OneToOne
     private Cup cup;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "place_id_place", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private Place place;
 
-    public Place getPlace() {
-        return place;
+    public Coffee() {
     }
 
-    public void setPlace(Place place) {
-        this.place = place;
+    public Coffee(String nameCoffee, String typeCoffee, Place place) {
+        this.nameCoffee = nameCoffee;
+        this.typeCoffee = typeCoffee;
+        this.place=place;
+    }
+
+    public Long getIdCoffee() {
+        return idCoffee;
+    }
+
+    public void setIdCoffee(Long idCoffee) {
+        this.idCoffee = idCoffee;
+    }
+
+    public String getNameCoffee() {
+        return nameCoffee;
+    }
+
+    public void setNameCoffee(String nameCoffee) {
+        this.nameCoffee = nameCoffee;
+    }
+
+    public String getTypeCoffee() {
+        return typeCoffee;
+    }
+
+    public void setTypeCoffee(String typeCoffee) {
+        this.typeCoffee = typeCoffee;
     }
 
     public Cup getCup() {
@@ -36,37 +67,11 @@ public class Coffee {
         this.cup = cup;
     }
 
-    public Coffee() {
-
+    public Place getPlace() {
+        return place;
     }
 
-    public Coffee(String name, String type) {
-        this.name = name;
-        this.type = type;
+    public void setPlace(Place place) {
+        this.place = place;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
 }

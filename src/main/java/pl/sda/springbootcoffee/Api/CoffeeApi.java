@@ -85,7 +85,7 @@ public class CoffeeApi {
 
     @PutMapping //put
     public void update(@RequestBody Coffee coffee) {
-        Optional<Coffee> byId = coffeeRepo.findById(coffee.getId());
+        Optional<Coffee> byId = coffeeRepo.findById(coffee.getIdCoffee());
         if (byId.isPresent()) {
             coffeeRepo.save(coffee);
         }

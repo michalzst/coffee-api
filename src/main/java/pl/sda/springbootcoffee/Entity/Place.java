@@ -1,46 +1,59 @@
 package pl.sda.springbootcoffee.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Entity
 public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String name;
+    private Long idPlace;
+    private String namePlace;
 
     @OneToOne
     private Adress adress;
 
-    @OneToMany(mappedBy = "place")
-    private Set<Coffee> coffees;
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "place")
+    private Set<Coffee> coffees=new HashSet<>();
 
-    public Place(){
-
+    public Set<Coffee> getCoffee() {
+        return coffees;
     }
 
-    public Place(String name, Adress adress, Set<Coffee> coffees) {
-        this.name = name;
-        this.adress=adress;
-        this.coffees=coffees;
+    public void setCoffee(Set<Coffee> coffees) {
+        this.coffees = coffees;
     }
 
-    public Long getId() {
-        return id;
+    public Place() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Place(String namePlace, Adress adress,Set<Coffee> coffees) {
+        this.namePlace = namePlace;
+        this.adress = adress;
+        this.coffees = coffees;
     }
 
-    public String getName() {
-        return name;
+    public Long getIdPlace() {
+        return idPlace;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIdPlace(Long idPlace) {
+        this.idPlace = idPlace;
+    }
+
+    public String getNamePlace() {
+        return namePlace;
+    }
+
+    public void setNamePlace(String namePlace) {
+        this.namePlace = namePlace;
     }
 
     public Adress getAdress() {
@@ -49,13 +62,5 @@ public class Place {
 
     public void setAdress(Adress adress) {
         this.adress = adress;
-    }
-
-    public Set<Coffee> getCoffee() {
-        return coffees;
-    }
-
-    public void setCoffee(Set<Coffee> coffee) {
-        this.coffees = coffees;
     }
 }

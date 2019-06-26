@@ -3,6 +3,7 @@ package pl.sda.springbootcoffee;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -16,14 +17,23 @@ public class SpringbootCoffeeApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringbootCoffeeApplication.class, args);
 
-        }
-        @Bean
-        public Docket getDocket(){
-            return new Docket(DocumentationType.SWAGGER_2)
-                    .select()
-                    .apis(RequestHandlerSelectors.any())
-                    .paths(PathSelectors.any())
-                    .build();
+    }
+
+    @Bean
+    public Docket getDocket() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    @Bean
+    public ReloadableResourceBundleMessageSource messageSource(){
+        ReloadableResourceBundleMessageSource source = new ReloadableResourceBundleMessageSource();
+        source.setBasename("classpath:i18n/messages");
+        source.setDefaultEncoding("UTF-8");
+        return source;
     }
 
 }

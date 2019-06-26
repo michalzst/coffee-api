@@ -14,7 +14,7 @@ import pl.sda.springbootcoffee.repository.PlaceRepo;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Api")
+@RequestMapping("/api")
 public class CoffeeApi {
 //    1 sposob - wstrzykiwanie do pola
 //    @Autowired

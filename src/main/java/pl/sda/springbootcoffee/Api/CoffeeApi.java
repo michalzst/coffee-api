@@ -14,7 +14,7 @@ import pl.sda.springbootcoffee.repository.PlaceRepo;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/pl/sda/springbootcoffee/Api")
+@RequestMapping("/Api")
 public class CoffeeApi {
 //    1 sposob - wstrzykiwanie do pola
 //    @Autowired
@@ -29,28 +29,28 @@ public class CoffeeApi {
 //    }
 //      koniec 3 sposobu
 
-    @EventListener(ApplicationReadyEvent.class) //taka jakby inicializacja bazy danych
-    public void get() {
-        Coffee coffee1 = new Coffee("Jacobs", "Black");
-        Coffee coffee2 = new Coffee("Tchibo", "White");
-        Cup cupSmall = new Cup(Size.SMALL);
-        Cup cupMedium = new Cup(Size.MEDIUM);
-        Adress adress = new Adress("Kolumba 86", "Szczecin", "73-110");
-        Place place = new Place("Columbus", adress);
-
-        adressRepo.save(adress);
-        cupRepo.save(cupSmall);
-        cupRepo.save(cupMedium);
-        placeRepo.save(place);
-
-        coffee1.setCup(cupSmall);
-        coffee1.setPlace(place);
-        coffee2.setCup(cupMedium);
-        coffee2.setPlace(place);
-
-        coffeeRepo.save(coffee1);
-        coffeeRepo.save(coffee2);
-    }
+//    @EventListener(ApplicationReadyEvent.class) //taka jakby inicializacja bazy danych
+//    public void get() {
+//        Coffee coffee1 = new Coffee("Jacobs", "Black");
+//        Coffee coffee2 = new Coffee("Tchibo", "White");
+//        Cup cupSmall = new Cup(Size.SMALL);
+//        Cup cupMedium = new Cup(Size.MEDIUM);
+//        Adress adress = new Adress("Kolumba 86", "Szczecin", "73-110");
+//        Place place = new Place("Columbus", adress);
+//
+//        adressRepo.save(adress);
+//        cupRepo.save(cupSmall);
+//        cupRepo.save(cupMedium);
+//        placeRepo.save(place);
+//
+//        coffee1.setCup(cupSmall);
+//        coffee1.setPlace(place);
+//        coffee2.setCup(cupMedium);
+//        coffee2.setPlace(place);
+//
+//        coffeeRepo.save(coffee1);
+//        coffeeRepo.save(coffee2);
+//    }
 
     //  2 sposob - wstrzykiwanie do konstruktora (tu bazy dabych) -ten jest poprawny
     private CoffeeRepo coffeeRepo;

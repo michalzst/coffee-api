@@ -34,28 +34,40 @@ public class CoffeeApi {
 //
 //        // save cup
 //        Cup cupBig = new Cup(Size.BIG);
+//        Cup cupMedium = new Cup(Size.MEDIUM);
 //        Cup cupSmall = new Cup(Size.SMALL);
 //        cupRepo.save(cupBig);
+//        cupRepo.save(cupMedium);
 //        cupRepo.save(cupSmall);
 //
 //        Adress adress = new Adress("Kolumba 86", "Szczecin", "73-110");
 //        adressRepo.save(adress);
 //
 //        Place place = new Place();
-//        place.setName("Columbus");
+//        place.setNamePlace("Columbus");
 //        place.setAdress(adress);
 //        placeRepo.save(place);
 //
-//        Coffee coffee1 = new Coffee("Jacobs", "Black");
+//        Coffee coffee1 = new Coffee("Tchibo", "Black");
 //        coffee1.setCup(cupSmall);
 //        coffee1.setPlace(place);
 //
-//        Coffee coffee2 = new Coffee("Tchibo", "White");
+//        Coffee coffee2 = new Coffee("Jacobs", "White");
 //        coffee2.setCup(cupBig);
 //        coffee2.setPlace(place);
 //
+//        Coffee coffee3 = new Coffee("Lavazza", "White");
+//        coffee3.setCup(cupMedium);
+//        coffee3.setPlace(place);
+//
+//        Coffee coffee4 = new Coffee("Nespresso", "Black");
+//        coffee4.setCup(cupMedium);
+//        coffee4.setPlace(place);
+//
 //        coffeeRepo.save(coffee1);
 //        coffeeRepo.save(coffee2);
+//        coffeeRepo.save(coffee3);
+//        coffeeRepo.save(coffee4);
 //    }
 
     //  2 sposob - wstrzykiwanie do konstruktora (tu bazy dabych) -ten jest poprawny

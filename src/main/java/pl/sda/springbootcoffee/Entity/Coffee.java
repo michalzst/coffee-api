@@ -29,10 +29,10 @@ public class Coffee {
     public Coffee() {
     }
 
-    public Coffee(String nameCoffee, String typeCoffee, Place place) {
+    public Coffee(String nameCoffee, String typeCoffee) {
         this.nameCoffee = nameCoffee;
         this.typeCoffee = typeCoffee;
-        this.place=place;
+
     }
 
     public Long getIdCoffee() {

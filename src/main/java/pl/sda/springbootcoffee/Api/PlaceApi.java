@@ -17,38 +17,6 @@ import java.util.Set;
 @RequestMapping("/place-api")
 public class PlaceApi {
 
-    @EventListener(ApplicationReadyEvent.class) //taka jakby inicializacja bazy danych
-    public void get() {
-
-        // save cup
-        Cup cupBig = new Cup(Size.BIG);
-        Cup cupSmall = new Cup(Size.SMALL);
-        cupRepo.save(cupBig);
-        cupRepo.save(cupSmall);
-
-        Adress adress = new Adress("Kolumba 86", "Szczecin", "73-110");
-        adressRepo.save(adress);
-
-        Place place = new Place();
-        place.setNamePlace("Columbus");
-        place.setAdress(adress);
-        placeRepo.save(place);
-
-        Coffee coffee1 = new Coffee();
-        coffee1.setNameCoffee("Jacobs");
-        coffee1.setTypeCoffee("Black");
-        coffee1.setCup(cupSmall);
-        coffee1.setPlace(place);
-        coffeeRepo.save(coffee1);
-
-        Coffee coffee2 = new Coffee();
-        coffee2.setNameCoffee("Tchibo");
-        coffee2.setTypeCoffee("White");
-        coffee2.setCup(cupBig);
-        coffee2.setPlace(place);
-        coffeeRepo.save(coffee2);
-    }
-
     //  2 sposob - wstrzykiwanie do konstruktora (tu bazy dabych) -ten jest poprawny
     private CoffeeRepo coffeeRepo;
     private CupRepo cupRepo;
